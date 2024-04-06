@@ -17,11 +17,14 @@ const resultText = document.getElementById("display-result");
 
 let my_result=0, com_result=0;
 
+const resetBtn = document.getElementById("reset-button");
+
 //선언한 dom 요소에 이벤트 생성
 
 rockBtn.addEventListener("click", displayMychoice);
 scissorsBtn.addEventListener("click", displayMychoice);
 paperBtn.addEventListener("click", displayMychoice);
+resetBtn.addEventListener("click", reset);
 
 function displayMychoice(e) {
     let clickedBtn = e.currentTarget.id;
@@ -114,4 +117,12 @@ function showResult(winLose)
         case 1: resultText.innerText = "again"; break;
         case 2: resultText.innerText = "win"; break;
     }
+}
+
+function reset(e)
+{
+    my_result=0;
+    com_result=0;
+    myResult.innerText = my_result;
+    comResult.innerText = com_result;
 }
