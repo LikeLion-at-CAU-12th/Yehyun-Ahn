@@ -19,12 +19,20 @@ let my_result=0, com_result=0;
 
 const resetBtn = document.getElementById("reset-button");
 
+const all = document.getElementsByClassName("change");
+const darkModeBtn = document.getElementById("dark-mode");
+let box = document.getElementsByClassName("contents");
+
+let body = document.querySelector('body');
+let imsi=0;
+
 //선언한 dom 요소에 이벤트 생성
 
 rockBtn.addEventListener("click", displayMychoice);
 scissorsBtn.addEventListener("click", displayMychoice);
 paperBtn.addEventListener("click", displayMychoice);
 resetBtn.addEventListener("click", reset);
+darkModeBtn.addEventListener("click", dark_mode);
 
 function displayMychoice(e) {
     let clickedBtn = e.currentTarget.id;
@@ -125,4 +133,20 @@ function reset(e)
     com_result=0;
     myResult.innerText = my_result;
     comResult.innerText = com_result;
+}
+
+function dark_mode(e)
+{   
+    if(imsi==0)
+    {
+        body.style.backgroundColor = 'black';
+        body.style.color = 'white';
+        imsi=1;
+    }
+    else
+    {
+        body.style.backgroundColor = 'white';
+        body.style.color = 'black';
+        imsi=0;
+    }
 }

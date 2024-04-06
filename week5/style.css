@@ -42,7 +42,7 @@ button {
   background-color: black;
   color: white;
   text-align: center;
-  padding: 3px;
+  padding:3px;;
 }
 
 #title {
@@ -158,4 +158,8 @@ button {
 #display-title {
     width: 100px;
     text-align: center;
+}
+
+#dark-mode {
+  margin-top: 2vh;
 }
