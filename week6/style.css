@@ -107,6 +107,13 @@ button{
     color: white;
     background-color: #4d81b1;
 }
+
+.complete-btn img {
+    width: 20px; 
+    height: 20px; 
+    vertical-align: middle; 
+}
+
 .complete-btn:hover{
     cursor: pointer;
     background-color: #c4e2ff;
@@ -116,6 +123,13 @@ button{
     color: white;
     background-color: #5e5e5e;
 }
+
+.del-btn img {
+    width: 20px; 
+    height: 20px; 
+    vertical-align: middle; 
+}
+
 .del-btn:hover{
     cursor: pointer;
     background-color: #e20000;
@@ -128,6 +142,12 @@ button{
 
 .done-btn{
     background-color: #5e5e5e;
+}
+
+.done-btn img {
+    width: 20px; 
+    height: 20px; 
+    vertical-align: middle; 
 }
 
 @media all and (max-width:970px){

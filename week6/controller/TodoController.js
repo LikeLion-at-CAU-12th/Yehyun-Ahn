@@ -30,16 +30,13 @@ class TodoController {
     }
     doneTodo(){
         this.innerNode.classList.toggle('done-text');
-        this.comBtnNode.classList.toggle('done-btn');
-        if(this.comBtnNode.innerText === "미완"){
-            this.comBtnNode.innerText = "완료";
-            // this.innerNode.classList.remove('done-text'); //toggle이 알아서 이 동작 해줌
-            // this.comBtnNode.classList.remove('done-btn');
+        const imgElement = this.comBtnNode.querySelector('img');
+
+        if(currentSrc.includes('../images/check.png')){
+            imgElement.src = '../images/re.png';
         }
-        else {
-            this.comBtnNode.innerText = "미완";
-            // this.innerNode.classList.add('done-text');
-            // this.comBtnNode.classList.add('done-btn');
+        else{
+            imgElement.src = '../images/check.png';
         }
     }
     complete(){
