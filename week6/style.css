@@ -150,6 +150,21 @@ button{
     vertical-align: middle; 
 }
 
+#to-do-list {
+    position: relative;
+}
+
+#all {
+    position: absolute; 
+    bottom: 20px; 
+    right: 20px; 
+}
+
+#all img {
+    height: 20px;
+    width: 20px;
+}
+
 @media all and (max-width:970px){
     main{
         flex-direction: column;

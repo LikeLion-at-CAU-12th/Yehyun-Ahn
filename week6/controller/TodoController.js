@@ -1,3 +1,4 @@
+import Complete from "../DOM/Complete.js";
 import Todo from "../DOM/Todo.js";
 import CompleteController from "./CompleteController.js";
 
@@ -31,6 +32,7 @@ class TodoController {
     doneTodo(){
         this.innerNode.classList.toggle('done-text');
         const imgElement = this.comBtnNode.querySelector('img');
+        const currentSrc = imgElement.src;
 
         if(currentSrc.includes('../images/check.png')){
             imgElement.src = '../images/re.png';
@@ -52,6 +54,19 @@ class TodoController {
         //const completeList = document.getElementById("complete-list");
         //const input = document.querySelector('input');
         //completeList.appendChild(this.newTodo.addRow());
+    }
+    alltodo(){
+
+        // 모든 할일을 완료 목록으로 이동
+        this.todoList.forEach(todo => {
+            const todoText = todo.getInnerText().textContent;
+            this.completeController.addTodoToList(todoText);
+        });
+
+        // "to-do-list" 비우기
+        const todoListElement = document.getElementById("to-do-list");
+        todoListElement.innerHTML = '';
+        this.todoList = []; // 할일 목록 배열 초기화
     }
 }
 

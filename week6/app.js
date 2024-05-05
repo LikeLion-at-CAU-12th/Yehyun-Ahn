@@ -2,6 +2,7 @@ import TodoController from "./controller/TodoController.js";
 //import CompleteController from "./controller/CompleteController.js";
 
 const addBtn = document.getElementById('input'); //버튼은 id
+const allBtn = document.getElementById('all');
 const input = document.querySelector('input');
 
 addBtn.addEventListener('click', () => {
@@ -12,6 +13,10 @@ addBtn.addEventListener('click', () => {
     todoController.addTodo();
     //completeController.addTodo();
 }); //function(){}와 동일
+
+allBtn.addEventListener('click', () => {
+    todoController.allTodo();
+});
 
 /*
 this.delBtnNode.addEventListener('click', ()=> {
