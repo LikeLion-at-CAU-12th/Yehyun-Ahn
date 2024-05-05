@@ -4,6 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const photoId = urlParams.get('id');
     const photoTitle = decodeURIComponent(urlParams.get('title'));
     const photoTime = decodeURIComponent(urlParams.get('time'));
+    const photoPhotographer = decodeURIComponent(urlParams.get('photographer'));
+    const photoKeyword = decodeURIComponent(urlParams.get('keyword'));
+
 
     const formatDateTime = (dateTimeStr) => {
         const year = dateTimeStr.substr(0, 4);
@@ -26,6 +29,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const timeElement = document.createElement('div');
     timeElement.textContent = `날짜: ${formattedDateTime}`;
     photoTitleContainer.appendChild(timeElement);
+
+    const photographerElement = document.createElement('div');
+    photographerElement.textContent = `촬영자: ${photoPhotographer}`;
+    photoTitleContainer.appendChild(photographerElement);
+
+    const keywordElement = document.createElement('div');
+    keywordElement.textContent = `키워드: ${photoKeyword}`;
+    photoTitleContainer.appendChild(keywordElement);
 }
 
 

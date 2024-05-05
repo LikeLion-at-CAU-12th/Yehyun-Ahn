@@ -60,7 +60,7 @@ async function getData() {
 }
 
 function openDetailPage(data) {
-  const detailUrl = `detail.html?id=${data.galId}&title=${encodeURIComponent(data.galTitle)}&time=${encodeURIComponent(data.galCreatedtime)}`;
+  const detailUrl = `detail.html?id=${data.galId}&title=${encodeURIComponent(data.galTitle)}&time=${encodeURIComponent(data.galCreatedtime)}&photographer=${encodeURIComponent(data.galPhotographer)}&keyword=${encodeURIComponent(data.galSearchKeyword)}`;
   window.open(detailUrl, '_blank');
 }
 
