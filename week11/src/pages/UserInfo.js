@@ -8,11 +8,13 @@ const UserInfo = () => {
     const [userData, setUserData] = useState([]); //userData는 useState 담고 있는 변수고 setUserData는 바뀌도록 트리거 하는 함수
     const [curPage, setCurPage] = useState(); //initial value === undefined
     const [filter, setFilter] = useState("all"); //색상 넣을 때 얘 이용하세요~
+    console.log(filter); //filter가 all, male, female...
   return (
     <MainLayout>
         <h1>🦁👶🏻12기 아기사자 리스트👶🏻🦁</h1>
         <ContentBox>
-            <UserFilter 
+            <UserFilter
+            filter={filter}
             setFilter={setFilter}
             setUserData={setUserData}
             setCurPage={setCurPage} />
