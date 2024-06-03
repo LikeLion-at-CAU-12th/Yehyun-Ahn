@@ -3,8 +3,13 @@ import axios from "axios";
 export const baseURL = "https://gominzipsession.o-r.kr";
 
 export const getPerPage = async(page) => {
-    const response = await axios.get(`${baseURL}/lionlist?page=${page}`);
-    return response.data;
+    const response = await axios.get(`${baseURL}/lionlist?page=${0}`);
+    const data = response.data;
+    const itemsPerPage = 5;
+    const startIndex = (page -1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    console.log("data");
+    return data.slice(startIndex, endIndex);
 }
 
 export const getGenderUser = async(gender) => {
