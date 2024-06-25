@@ -11,8 +11,8 @@ const Home = () => {
 
   return (
     <Container>
-      <Title>LikeLion Test</Title>
-      <StartButton onClick={startTest}>Start Test</StartButton>
+      <Title>🦁LikeLion Test🦁</Title>
+      <StartButton onClick={startTest}>바로가기</StartButton>
     </Container>
   );
 };

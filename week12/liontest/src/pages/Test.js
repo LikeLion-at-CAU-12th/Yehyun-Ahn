@@ -40,7 +40,7 @@ const Test = () => {
           onAnswer={answerIndex => handleAnswer(q.id, answerIndex)}
         />
       ))}
-      <SubmitButton onClick={handleSubmit}>Submit</SubmitButton>
+      <SubmitButton onClick={handleSubmit}>완료💫</SubmitButton>
     </Container>
   );
 };
