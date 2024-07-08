@@ -5,8 +5,8 @@ import { useForm } from '../hooks/useForm';
 import { login } from '../apis/user';
 
 export const Home = () => {
-    const [id, onChangeId] = useForm();
-    const [pw, onChangePw] = useForm();
+    const [id, onChangeId] = useForm("");
+    const [pw, onChangePw] = useForm("");
 
     const router = useNavigate();
 
@@ -22,6 +22,7 @@ export const Home = () => {
             localStorage.setItem("access", result.accessToken);
             localStorage.setItem("refresh", result.refreshToken);
             router("/mypage");
+            window.location.reload();
         } catch (error) {
             alert("id나 pw를 입력하세요")
         }

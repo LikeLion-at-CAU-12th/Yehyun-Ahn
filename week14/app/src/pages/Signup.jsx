@@ -5,10 +5,10 @@ import { signUp } from '../apis/user';
 
 export const Signup = () => {
   //받아야할 값 변수 네개 작성
-  const [id, setId] = useState();
-  const [pw, setPw] = useState();
-  const [name, setName] = useState();
-  const [age, setAge] = useState();
+  const [id, setId] = useState("");
+  const [pw, setPw] = useState("");
+  const [name, setName] = useState("");
+  const [age, setAge] = useState("");
 
   //데이터를 넘기기 위한 저장하는 onChange함수
   const onChangeID = (e) => {

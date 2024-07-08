@@ -33,6 +33,12 @@ export const getMyPage = async () => {
   }
 };
 
+export const logout = () => {
+    localStorage.removeItem("access");
+    localStorage.removeItem("refresh");
+    window.location.href = "/";
+  };
+
 export const getNewRefreshToken = async () => {
   try {
     const accessToken = localStorage.getItem("access");
