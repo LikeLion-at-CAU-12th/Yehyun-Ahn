@@ -1,21 +1,28 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
 import { getMyPage } from '../apis/user';
+import { useNavigate } from 'react-router-dom';
 
 
 export const Mypage = () => {
 
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
+    const router = useNavigate();
 
     useEffect(() =>{
+      if (!localStorage.getItem("access")) {
+        router("/");
+        return;
+      }
         getMyPage().then((data) => {
             setData(data);
             setLoading(false);
         }).catch((error) => {
             alert("토큰 기한 만료");
+            router("/");
         });
-    }, []);
+    }, [router]);
 
     if(loading) return <div>로딩중입니다......</div>;
     

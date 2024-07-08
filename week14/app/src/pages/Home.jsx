@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { useForm } from '../hooks/useForm';
@@ -9,6 +9,12 @@ export const Home = () => {
     const [pw, onChangePw] = useForm();
 
     const router = useNavigate();
+
+    useEffect(() => {
+      if(localStorage.getItem("access")) {
+        router("/mypage");
+      }
+    }, [router]);
 
     const onClick = async () => {
         try{
