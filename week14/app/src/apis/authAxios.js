@@ -1,39 +1,50 @@
+// AuthAxios.js
+
 import axios from "axios";
 import { getNewRefreshToken } from "./user";
 
-export const getAuthAxios = (token) => {
+const baseURL = `http://yangzzago.kro.kr:3000`;
+
+const getAuthAxios = () => {
   const authAxios = axios.create({
-    baseURL: `http://yangzzago.kro.kr:3000`,
+    baseURL: baseURL,
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${localStorage.getItem("access")}`,
     },
   });
 
   authAxios.interceptors.response.use(
     (response) => response,
     async (error) => {
-      if (error.response && error.response.status === 401) {
+      const originalRequest = error.config;
+
+      // 리프레시 토큰 만료 확인
+      if (error.response.status === 401 && !originalRequest._retry) {
+        originalRequest._retry = true;
+
         try {
-          const result = await getNewRefreshToken();
-          if (result && result.accessToken) {
-            // Update the authorization header with the new token
-            error.config.headers.Authorization = `Bearer ${result.accessToken}`;
-            localStorage.setItem("access", result.accessToken);
-            localStorage.setItem("refresh", result.refreshToken);
-            // Retry the original request with the new access token
-            return await axios(error.config);
-          }
-        } catch (e) {
-          // Handle the error (e.g., redirect to login)
-          console.error("Token refresh failed", e);
-          // Optionally, redirect to login page or show an alert
-          alert("세션이 만료되었습니다. 다시 로그인해주세요.");
-          window.location.href = "/login"; // Redirect to login page
+          const { accessToken, refreshToken } = await getNewRefreshToken();
+
+          // 새로 받은 토큰으로 다시 요청하기
+          localStorage.setItem("access", accessToken);
+          localStorage.setItem("refresh", refreshToken);
+
+          originalRequest.headers.Authorization = `Bearer ${accessToken}`;
+          return axios(originalRequest);
+        } catch (error) {
+          // 리프레시 토큰이 만료되면 로그아웃 처리
+          localStorage.removeItem("access");
+          localStorage.removeItem("refresh");
+          window.location.href = "/"; // 로그인 페이지로 이동
+          return Promise.reject(error);
         }
       }
+
       return Promise.reject(error);
     }
   );
 
   return authAxios;
 };
+
+export default getAuthAxios;

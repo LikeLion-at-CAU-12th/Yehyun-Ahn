@@ -11,7 +11,9 @@ export const Mypage = () => {
     const router = useNavigate();
 
     const onClick = async () => {
-      logout();
+      localStorage.removeItem("access");
+      localStorage.removeItem("refresh");
+      window.location.href = "/";
     }
 
     useEffect(() =>{
